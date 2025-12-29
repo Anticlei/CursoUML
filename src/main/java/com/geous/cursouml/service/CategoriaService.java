@@ -2,7 +2,10 @@ package com.geous.cursouml.service;
 
 import com.geous.cursouml.domain.Categoria;
 import com.geous.cursouml.repository.CategoriaRepository;
+import com.geous.cursouml.service.exception.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CategoriaService {
@@ -13,6 +16,8 @@ public class CategoriaService {
     }
 
     public Categoria BuscarCategoriaPorId(Integer id){
-        return categoriaRepository.findById(id).orElse(null);
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
+        return categoria.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
     }
 }
