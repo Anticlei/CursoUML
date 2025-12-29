@@ -1,6 +1,9 @@
 package com.geous.cursouml.resources;
 
 import com.geous.cursouml.domain.Categoria;
+import com.geous.cursouml.service.CategoriaService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,13 +15,15 @@ import java.util.List;
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Categoria> listarCategorias(){
-        Categoria cat1 = new Categoria(1,"Informática");
-        Categoria cat2 = new Categoria(2,"Escritório");
-        List<Categoria> listaCategorias = new ArrayList<>();
-        listaCategorias.add(cat1);
-        listaCategorias.add(cat2);
-        return listaCategorias;
+    private CategoriaService categoriaService;
+
+    public CategoriaResource(CategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findById(@PathVariable int id) {
+       Categoria obj = categoriaService.BuscarCategoriaPorId(id);
+       return ResponseEntity.ok().body(obj);
     }
 }
