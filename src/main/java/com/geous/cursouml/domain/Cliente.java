@@ -1,5 +1,6 @@
 package com.geous.cursouml.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.geous.cursouml.domain.enums.TipoCliente;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipoCliente;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<Endereco>();
 
