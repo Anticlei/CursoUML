@@ -2,6 +2,8 @@ package com.geous.cursouml.domain;
 
 import com.geous.cursouml.domain.enums.EstadoPagamento;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,6 +11,8 @@ import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
 public abstract class Pagamento implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -31,28 +35,12 @@ public abstract class Pagamento implements Serializable {
         this.pedido = pedido;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public EstadoPagamento getEstado() {
         return EstadoPagamento.toEnum(estado);
     }
 
     public void setEstado(EstadoPagamento estado) {
         this.estado = estado.getCodigo();
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
     @Override
