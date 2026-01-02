@@ -1,7 +1,6 @@
 package com.geous.cursouml.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.geous.cursouml.domain.enums.EstadoPagamento;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,7 +25,7 @@ public abstract class Pagamento implements Serializable {
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
-    @JsonBackReference
+    @JsonIgnore
     private Pedido pedido;
 
     public Pagamento() {

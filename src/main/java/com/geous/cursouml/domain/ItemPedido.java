@@ -2,7 +2,6 @@ package com.geous.cursouml.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.geous.cursouml.domain.PK.ItemPedidoPK;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.Getter;

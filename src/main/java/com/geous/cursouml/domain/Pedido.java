@@ -1,11 +1,8 @@
 package com.geous.cursouml.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -28,12 +25,10 @@ public class Pedido implements Serializable {
     private Date instante;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
-    @JsonManagedReference
     private Pagamento pagamento;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    @JsonManagedReference
     private Cliente cliente;
 
     @ManyToOne
