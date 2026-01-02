@@ -1,6 +1,5 @@
 package com.geous.cursouml.service;
 
-import com.geous.cursouml.domain.Categoria;
 import com.geous.cursouml.domain.Cliente;
 import com.geous.cursouml.repository.ClienteRepository;
 import com.geous.cursouml.service.exception.ObjectNotFoundException;

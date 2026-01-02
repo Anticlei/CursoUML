@@ -1,5 +1,6 @@
 package com.geous.cursouml.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.geous.cursouml.domain.enums.TipoCliente;
 import jakarta.persistence.*;
@@ -32,6 +33,7 @@ public class Cliente implements Serializable {
     private Set<String> telefones = new HashSet<String>();
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>();
 
     public Cliente() {
@@ -101,6 +103,7 @@ public class Cliente implements Serializable {
         this.telefones = telefones;
     }
 
+    @JsonIgnore
     public List<Pedido> getPedidos() {
         return pedidos;
     }

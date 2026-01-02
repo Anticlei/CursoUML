@@ -1,6 +1,8 @@
 package com.geous.cursouml.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +31,7 @@ public class Produto implements Serializable {
     private List<Categoria> categorias = new ArrayList<>();
 
     @OneToMany(mappedBy = "id.produto")
+    @JsonIgnore
     private Set<ItemPedido> itens = new HashSet<>();
 
     public Produto() {
@@ -40,6 +43,7 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public List<Pedido> getPedidos() {
         List<Pedido> pedidos = new ArrayList<>();
         for (ItemPedido item : itens) {
